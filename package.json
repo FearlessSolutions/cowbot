@@ -18,7 +18,10 @@
     "hubot-rules": "^0.1.1",
     "hubot-scripts": "^2.16.1",
     "hubot-shipit": "^0.2.0",
-    "hubot-slack": "^3.3.0"
+    "hubot-slack": "^3.3.0",
+    "coffee-script": "~1.6",
+    "underscore": ">= 1.0",
+    "clark": "0.0.6"
   },
   "engines": {
     "node": "0.10.x"
