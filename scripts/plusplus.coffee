@@ -39,18 +39,13 @@ module.exports = (robot) ->
     # the increment/decrement operator ++ or --
     ([-+]{2}|—)
     # optional reason for the plusplus
-    (?:\s+(?:for|because|cause|cuz)\s+(.+))?
+    (?:\s+(?:for|because|cause|cuz|to)\s+(.+))?
     $ # end of line
   ///i, (msg) ->
     # let's get our local vars in place
     [dummy, name, operator, reason] = msg.match
     from = msg.message.user.name.toLowerCase()
     room = msg.message.room
-
-    if msg.message.user.name.toLowerCase() is "chogan" and operator is "--"
-      dummy = "chogan";
-      reason = "being a jerk";
-    
 
     # do some sanitizing
     reason = reason?.trim().toLowerCase()
