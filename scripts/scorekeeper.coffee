@@ -49,9 +49,11 @@ class ScoreKeeper
 
       @saveUser(user, from, room, reason)
     else
+      @robot.logger.debug "Could not validate user ["+user+"] from ["+from+"] for addition"
       [null, null]
 
   subtract: (user, from, room, reason) ->
+    @robot.logger.debug "Subtracting from ["+user+"]"
     if @validate(user, from)
       user = @getUser(user)
       @storage.scores[user]--
@@ -63,6 +65,7 @@ class ScoreKeeper
 
       @saveUser(user, from, room, reason)
     else
+      @robot.logger.warn "Could not validate user ["+user+"] from ["+from+"] for subtraction"
       [null, null]
 
   erase: (user, from, room, reason) ->

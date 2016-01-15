@@ -84,6 +84,8 @@ module.exports = (robot) ->
         room: room
         reason: reason
       }
+    else
+      @robot.logger.debug "No score received"
 
   robot.respond ///
     (?:erase )
