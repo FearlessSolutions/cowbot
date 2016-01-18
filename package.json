@@ -28,6 +28,6 @@
     "node": "0.10.x"
   },
   "scripts": {
-    "start": ". .env;exec node_modules/.bin/hubot --adapter slack --name \"cowbot\" \"$@\""
+    "start": ". ./.env;exec node_modules/.bin/hubot --adapter slack --name \"cowbot\" \"$@\""
   }
 }
