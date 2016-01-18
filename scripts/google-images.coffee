@@ -74,15 +74,18 @@ imageMe = (msg, query, animated, faces, cb) ->
     if faces is true
       q.imgType = 'face'
     url = 'https://www.googleapis.com/customsearch/v1'
+    msg.robot.logger.debug "Calling URL: "+url
+    msg.robot.logger.debug ".. With query: "
+    msg.robot.logger.debug index + ": " + elm for index, elm of q
     msg.http(url)
       .query(q)
       .get() (err, res, body) ->
+        if res.statusCode is 403
+          msg.send "Daily image quota exceeded, using alternate source."
+          deprecatedImage(msg, query, animated, faces, cb)
+          return
         if err
-          if res.statusCode is 403
-            msg.send "Daily image quota exceeded, using alternate source."
-            deprecatedImage(msg, query, animated, faces, cb)
-          else
-            msg.send "Encountered an error :( #{err}"
+          msg.send "Encountered an error :( #{err}"
           return
         if res.statusCode isnt 200
           msg.send "Bad HTTP response :( #{res.statusCode}"

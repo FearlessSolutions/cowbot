@@ -5,6 +5,9 @@
   "author": "cbushong@fearsol.com",
   "description": "A simple helpful cow to keep it purple",
   "dependencies": {
+    "clark": "0.0.6",
+    "coffee-script": "~1.6",
+    "dotenv": "^1.2.0",
     "hubot": "^2.13.2",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.1.5",
@@ -19,11 +22,12 @@
     "hubot-scripts": "^2.16.1",
     "hubot-shipit": "^0.2.0",
     "hubot-slack": "^3.3.0",
-    "coffee-script": "~1.6",
-    "underscore": ">= 1.0",
-    "clark": "0.0.6"
+    "underscore": ">= 1.0"
   },
   "engines": {
     "node": "0.10.x"
+  },
+  "scripts": {
+    "start": ". .env;exec node_modules/.bin/hubot --adapter slack --name \"cowbot\" \"$@\""
   }
 }
