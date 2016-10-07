@@ -1,12 +1,12 @@
 #!/bin/sh
 
 set -e
-if [ -f .env ]; then
-  . .env
+if [ -f ./.env ]; then
+  . ./.env
   npm install
   export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
 
-  exec node_modules/.bin/hubot --name "cowbot" "$@"
+  exec node_modules/.bin/hubot --adapter slack --name "cowbot" "$@"
 else
   echo "Cannot find .env config file.  Please view .env.sample for an example."
   exit 1
