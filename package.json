@@ -8,7 +8,7 @@
     "clark": "0.0.6",
     "coffee-script": "~1.6",
     "dotenv": "^1.2.0",
-    "hubot": "^2.13.2",
+    "hubot": "^2.19.0",
     "hubot-business-cat": "^1.5.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.1.5",
@@ -22,7 +22,7 @@
     "hubot-s3-brain": "0.0.1",
     "hubot-scripts": "^2.16.1",
     "hubot-shipit": "^0.2.0",
-    "hubot-slack": "^3.3.0",
+    "hubot-slack": "^4.1.0",
     "underscore": ">= 1.0"
   },
   "engines": {
