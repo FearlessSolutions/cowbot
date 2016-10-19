@@ -39,13 +39,30 @@ module.exports = (robot) ->
                 }
               }, function (err, response){
                 if(err){
-                  msg.send("Error!");
+                  msg.send("Error uploading picture!");
                   msg.send(Util.inspect(err))
                   msg.send(Util.inspect(response.body))
                 }
             });`
         else
           msg.send "Error!"
+          `request.post({
+                url: 'https://slack.com/api/files.upload',
+                formData: {
+                  token: robot.adapter.options.token,
+                  title: "Error Message for #"+ticket,
+                  filename: "error"+ticket+".png",
+                  filetype: "auto",
+                  channels: msg.message.room,
+                  file: fs.createReadStream('./response.png')
+                }
+              }, function (err, response){
+                if(err){
+                  msg.send("Error uploading picture!");
+                  msg.send(Util.inspect(err))
+                  msg.send(Util.inspect(response.body))
+                }
+            });`
           msg.send Util.inspect(err)
     else
       msg.send "Hold on there, cowboy.  I can't validate parking from here.  You should moooove over to #validate_parking"
