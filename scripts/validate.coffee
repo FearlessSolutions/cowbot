@@ -13,10 +13,41 @@
 # Author:
 #   brettbuddin
 
+PROJECT_LIST =
+  employee: "Employee"
+  misc: "MISC"
+  imars: "Project-IMARS"
+  mdstate: "Project-MD State"
+  sbagov: "Project-SBA.gov"
+  hubzone: "Proj-SBA HUBZone"
+  visitorbusdev: "Visitor-BusDev"
+  visitormisc: "Visitor-Misc"
+  visitorrecruiting: "Visitor-Recruiting"
+  visitorvendor: "Visitor-Vendor"
+
+projects = ""
+project = for nickname, fullname of PROJECT_LIST
+  projects = projects.concat "\n#{nickname}"
+
 Util = require "util"
 request = require "request"
 fs = require "fs"
 module.exports = (robot) ->
+  robot.respond /validate help$/i, (msg) ->
+    msg.send """
+      Usage:
+      To validate a ticket for yourself:
+      `cowbot validate 000000 for me`
+      To validate a ticket for someone else, either:
+      `cowbot validate 000000 for <first-name> <last-name> on <PROJECT>`
+      `cowbot validate 000000 for <first-name> <last-name> on <PROJECT> because some reason`
+      Allowed PROJECTs:
+      ```#{projects}
+      ```
+    """
+  robot.respond /validate ([0-9]+) for me$/i, (msg) ->
+    msg.send "I'll totally validate that for you, <firstname> <lastname>"
+    msg.send "... later"
   robot.respond /validate ([0-9]+)$/i, (msg) ->
     if true
       msg.send "Hold on there, cowboy.  I'm currently out of order.  Ask @sshep for validation."
@@ -27,7 +58,7 @@ module.exports = (robot) ->
           msg.send "Hold on there, cowboy.  I need 6 digits to validate parking."
         else
           @exec = require('child_process').exec
-          command = "PARKING_TICKET=#{ticket} casperjs lib/casper-validate-parking.js"
+          command = "PARKING_TICKET=#{ticket} node lib/chrome-validate-parking.js"
           msg.send "Validating parking for ticket #{ticket}..."
           @exec command, (error, stdout, stderr) ->
             if error is null
