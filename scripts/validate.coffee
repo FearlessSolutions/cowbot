@@ -46,8 +46,7 @@ module.exports = (robot) ->
       ```
     """
   robot.respond /validate ([0-9]+) for me$/i, (msg) ->
-    msg.send "I'll totally validate that for you, #{msg.user.name}"
-    msg.send "... later"
+    msg.send "I'll totally validate that for you, #{JSON.stringify(msg.user)}...later"
   robot.respond /validate ([0-9]+)$/i, (msg) ->
     if true
       msg.send "Hold on there, cowboy.  I'm currently out of order.  Ask @sshep for validation."
