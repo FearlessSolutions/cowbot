@@ -1,0 +1,4 @@
+app:
+  screenshot_path: /tmp
+skidata:
+  url: https://validate.usa.skidata.com/15SFrederickStreet/

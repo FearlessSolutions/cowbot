@@ -1,0 +1,6 @@
+app:
+  screenshot_path: SCREENSHOT_PATH
+skidata:
+  url: URL
+  username: USERNAME
+  password: PASSWORD
