@@ -1,14 +1,23 @@
 const puppeteer = require('puppeteer');
 const util = require("util");
 
+function getenv(envname){
+  if(process.env[envname]) {
+    return process.env[envname];
+  } else {
+    console.log(`FATAL: No ${envname} env given to this script`);
+    process.exit(10);
+  }
+}
+
 const URL = "https://validate.usa.skidata.com/15SFrederickStreet/"
-const TICKET = "048707";
-const FIRST_NAME = "Bethany";
-const LAST_NAME = "Halteman";
-const PROJECT = "Employee";
 const SCREENSHOT_FILE = "response.png";
-const USERNAME="cbushong";
-const PASSWORD="Fearless123";
+const TICKET = getenv("TICKET");
+const FIRST_NAME = getenv("FIRST_NAME");
+const LAST_NAME = getenv("LAST_NAME");
+const PROJECT = getenv("PROJECT");
+const USERNAME = getenv("PARKING_USERNAME");
+const PASSWORD = getenv("PARKING_PASSWORD");
 
 const timeout = ms => new Promise(res => setTimeout(res, ms));
 

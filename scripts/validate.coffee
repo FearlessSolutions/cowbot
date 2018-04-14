@@ -46,11 +46,11 @@ module.exports = (robot) ->
       ```
     """
   robot.respond /validate ([0-9]+) for me$/i, (msg) ->
-    msg.send "update 1"
-    msg.send "I'll totally validate that for you, #{JSON.stringify(msg.message}...later"
+    user = msg.message.user.name.toLowerCase()
+    msg.send "I'll totally validate that for you, #{user}... later"
   robot.respond /validate ([0-9]+)$/i, (msg) ->
     if true
-      msg.send "Hold on there, cowboy.  I'm currently out of order.  Ask @sshep for validation."
+      msg.send "Hold on there, cowboy.  I'm currently out of order.  Ask @parking-validators for validation."
     else
       if msg.message.room is "C2LRCM4DN"
         ticket = msg.match[1]
@@ -58,7 +58,7 @@ module.exports = (robot) ->
           msg.send "Hold on there, cowboy.  I need 6 digits to validate parking."
         else
           @exec = require('child_process').exec
-          command = "PARKING_TICKET=#{ticket} node lib/chrome-validate-parking.js"
+          command = "nvm use $(cat chrome-headless/.nvmrc) && PARKING_TICKET=#{ticket} node chrome-headless/chrome-parking-valication.js"
           msg.send "Validating parking for ticket #{ticket}..."
           @exec command, (error, stdout, stderr) ->
             if error is null
