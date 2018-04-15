@@ -15,13 +15,13 @@ app.get('/', generate_id, validate_parking, async (req, res) => {
   if (req.validated === false) {
     code = 500;
   }
-  res.sendFile(req.screenshot_file, {}, function(err){
-    if (err) {
-      res.status(500).send("Could not send file...");
-    }
-    //fs.unlinkSync(req.screenshot_file);
-    return;
-  });
+  response = {
+    text: req.validation_text,
+    screenshot_file: req.screenshot_file,
+    validated: req.validated
+  };
+  res.setHeader('Content-Type', 'application/json');
+  res.status(code).send(JSON.stringify(response));
 });
 
 app.listen(3000, () => console.log('Parking validation app up on port 3000'))

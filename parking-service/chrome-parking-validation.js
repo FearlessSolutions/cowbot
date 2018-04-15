@@ -6,13 +6,15 @@ function getquery(query, varname){
   if(query[varname]) {
     return query[varname];
   } else {
-    console.log(`FATAL: No ${varname} env given to this script`);
+    console.log(`FATAL: No ${varname} querystring given to this script`);
     throw new Error(`FATAL: No ${varname} querystring given to this service`);
   }
 }
 
 async function validate_parking(req, res, next){
+  req.validation_text = "";
   console.log(`validate_parking-ss_file: ${req.screenshot_file}`);
+  console.log(`Query: ${util.inspect(req.query)}`);
   const URL = config.skidata.url;
   const USERNAME = config.skidata.username;
   const PASSWORD = config.skidata.password;
@@ -71,6 +73,7 @@ async function validate_parking(req, res, next){
     try {
       await frame.waitForSelector("#itemValidationCustomField1ID");
     } catch (e) {
+      req.validation_text += "ERROR: Could not validate ticket.  Please review screenshot.\n";
       console.log("ERROR: Could not validate ticket.  Please review screenshot.");
       await page.screenshot({path: SCREENSHOT_FILE});
       req.validated = false;
@@ -99,9 +102,11 @@ async function validate_parking(req, res, next){
     await browser.close();
 
     if ( validatedTicket === TICKET ) { 
+      req.validation_text += "Ticket has been approved successfully!\n";
       console.log("Ticket has been approved successfully!");
       req.validated = true;
     } else {
+      req.validation_text += `ERROR: Last Validated number '${validatedTicket}' does not match Requested number '${TICKET}'.  Ticket probably not validated.  Please review screenshot.\n`;
       console.log(`ERROR: Last Validated number '${validatedTicket}' does not match Requested number '${TICKET}'.  Ticket probably not validated.  Please review screenshot.`);
       req.validated = false;
     }

@@ -1,0 +1,26 @@
+version: '3.3'
+volumes:
+  images:
+services:
+  hubot:
+    build:
+      context: ./cowbot
+    restart: unless-stopped
+    env_file:
+      - .hubot.env
+    links:
+    - parking-service
+    volumes:
+    - images:/cowbot-images
+  parking-service:
+    build:
+      context: ./parking-service
+    restart: unless-stopped
+    environment:
+    - SCREENSHOT_PATH=/cowbot-images
+    env_file:
+      - .parking-service.env
+    volumes:
+    - images:/cowbot-images
+    #ports:
+    #  - '3000:3000'
