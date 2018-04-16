@@ -5,6 +5,7 @@ services:
   hubot:
     build:
       context: ./cowbot
+    image: fearlesstech/cowbot:cowbot
     restart: unless-stopped
     env_file:
       - .hubot.env
@@ -15,6 +16,7 @@ services:
   parking-service:
     build:
       context: ./parking-service
+    image: fearlesstech/cowbot:parking-service
     restart: unless-stopped
     environment:
     - SCREENSHOT_PATH=/cowbot-images
