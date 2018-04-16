@@ -14,11 +14,10 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir /app
 WORKDIR /app
 
-RUN npm install -g yarn
-COPY yarn.lock package.json ./
-RUN mkdir -p /mnt/parking
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 
-RUN yarn install
+COPY yarn.lock package.json ./
+RUN yarn install --pure-lockfile
 
 COPY . .
 
