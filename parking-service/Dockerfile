@@ -17,7 +17,7 @@ WORKDIR /app
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 
 COPY yarn.lock package.json ./
-RUN yarn install --pure-lockfile
+RUN yarn install --frozen-lockfile --production && yarn cache clean
 
 COPY . .
 

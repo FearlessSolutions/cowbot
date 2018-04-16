@@ -90,8 +90,8 @@ async function validate_parking(req, res, next){
     await frame.type("#VisitorFirstName", FIRST_NAME);
     await frame.type("#VisitorLastName", LAST_NAME);
 
-    // TODO: Enable/disable to actually validate this ticket
-    //await frame.click("#buttonSave");
+    // Enable/disable to actually validate this ticket
+    await frame.click("#buttonSave");
 
     await timeout(2000);
     const lastTicket = await frame.$("b span b");
