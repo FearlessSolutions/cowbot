@@ -34,8 +34,6 @@ services:
     restart: unless-stopped
     env_file:
       .skill-search.env
-    ports:
-      - "3001:3001"
     volumes:
       - ./skill-search/data/${SQLITE_DATABASE}:/app/data/${SQLITE_DATABASE}:ro
 
