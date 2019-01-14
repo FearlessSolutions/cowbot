@@ -1,6 +1,8 @@
 version: '3.3'
+
 volumes:
   images:
+
 services:
   hubot:
     build:
@@ -13,6 +15,7 @@ services:
     - parking-service
     volumes:
     - images:/cowbot-images
+
   parking-service:
     build:
       context: ./parking-service
@@ -24,5 +27,34 @@ services:
       - .parking-service.env
     volumes:
     - images:/cowbot-images
-    #ports:
-    #  - '3000:3000'
+
+  skill-search:
+    build:
+      context: ./skill-search
+    restart: unless-stopped
+    env_file:
+      .skill-search.env
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./skill-search/data/${SQLITE_DATABASE}:/app/data/${SQLITE_DATABASE}:ro
+
+  job-refresh-skills:
+    build:
+      context: ./skill-search
+    restart: unless-stopped
+    env_file:
+      .skill-search.env
+    entrypoint: "node ./src/jobs/refreshSkills.js"
+    volumes:
+      - ./skill-search/data/${SQLITE_DATABASE}:/app/data/${SQLITE_DATABASE}:rw
+
+  job-refresh-users:
+    build:
+      context: ./skill-search
+    restart: unless-stopped
+    env_file:
+      .skill-search.env
+    entrypoint: "node ./src/jobs/refreshUsers.js"
+    volumes:
+      - ./skill-search/data/${SQLITE_DATABASE}:/app/data/${SQLITE_DATABASE}:rw
