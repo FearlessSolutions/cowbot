@@ -1,7 +1,7 @@
 request = require "request"
 
 module.exports = (robot) ->
-  robot.hear /who knows (\w+)\?$/i, (msg) ->
+  robot.hear /who knows ([\w\s\.]*)\?$/i, (msg) ->
     skill = msg.match[1]
     request.get "http://skill-search:3001/users?skill=" + skill, (error, response) ->
       if(error)
