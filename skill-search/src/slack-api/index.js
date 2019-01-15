@@ -1,9 +1,10 @@
 const fetch = require('node-fetch')
+const config = require('../../config')
 
 class SlackApi {
   constructor(token) {
     this.baseUrl = 'https://slack.com/api'
-    this.token = token || process.env.SLACK_OAUTH_TOKEN
+    this.token = token || config.slackOauthToken
   }
 
   fetchUsers() {

@@ -1,6 +1,6 @@
-require('dotenv').config()
+const config = require('../../config')
 const sqlite3 = require('sqlite3')
-const db = new sqlite3.Database(`${__dirname}/../../data/${process.env.SQLITE_DATABASE}`)
+const db = new sqlite3.Database(config.sqliteDatabase)
 const { selectUsersWithSkill } = require('../db')
 
 if(process.argv.length != 3) {

@@ -1,6 +1,6 @@
-require('dotenv').config()
+const config = require('../../config')
 const sqlite3 = require('sqlite3')
-const db = new sqlite3.Database(`${__dirname}/../../data/${process.env.SQLITE_DATABASE}`)
+const db = new sqlite3.Database(config.sqliteDatabase)
 const { selectUserUids, updateUser } = require('../db')
 const SlackApi = require('../slack-api')
 const slackApi = new SlackApi()

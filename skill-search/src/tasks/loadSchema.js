@@ -1,4 +1,4 @@
-require('dotenv').config()
+const config = require('../../config')
 const execSync = require('child_process').execSync
 
-execSync(`sqlite3 ${__dirname}/../../data/${process.env.SQLITE_DATABASE} < ${__dirname}/../db/schema.sql`)
+execSync(`sqlite3 ${config.sqliteDatabase} < ${__dirname}/../db/schema.sql`)

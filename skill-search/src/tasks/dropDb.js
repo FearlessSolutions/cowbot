@@ -1,6 +1,6 @@
-require('dotenv').config()
+const config = require('../../config')
 const fs = require('fs')
 
-fs.unlink(`${__dirname}/../../data/${process.env.SQLITE_DATABASE}`, (err) => {
+fs.unlink(config.sqliteDatabase, (err) => {
   if(err) throw err
 })
