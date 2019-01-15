@@ -7,6 +7,7 @@
     "sqlite3": "^4.0.4"
   },
   "scripts": {
+    "db:create": "node ./src/tasks/createDb.js",
     "db:drop": "node ./src/tasks/dropDb.js",
     "db:load-schema": "node ./src/tasks/loadSchema.js",
     "db:reload": "npm run db:drop && npm run db:load-schema",

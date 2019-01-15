@@ -31,28 +31,30 @@ services:
   skill-search:
     build:
       context: ./skill-search
+    image:
+      fearlesstech/cowbot-skill-search:latest
     restart: unless-stopped
     env_file:
       .skill-search.env
     volumes:
-      - ./skill-search/data/${SQLITE_DATABASE}:/app/data/${SQLITE_DATABASE}:ro
+      - ./skill-search/data/skill-search.db:/app/data/skill-search.db:ro
 
   job-refresh-skills:
-    build:
-      context: ./skill-search
+    image:
+      fearlesstech/cowbot-skill-search:latest
     restart: unless-stopped
     env_file:
       .skill-search.env
     entrypoint: "node ./src/jobs/refreshSkills.js"
     volumes:
-      - ./skill-search/data/${SQLITE_DATABASE}:/app/data/${SQLITE_DATABASE}:rw
+      - ./skill-search/data/skill-search.db:/app/data/skill-search.db:rw
 
   job-refresh-users:
-    build:
-      context: ./skill-search
+    image:
+      fearlesstech/cowbot-skill-search:latest
     restart: unless-stopped
     env_file:
       .skill-search.env
     entrypoint: "node ./src/jobs/refreshUsers.js"
     volumes:
-      - ./skill-search/data/${SQLITE_DATABASE}:/app/data/${SQLITE_DATABASE}:rw
+      - ./skill-search/data/skill-search.db:/app/data/skill-search.db:rw

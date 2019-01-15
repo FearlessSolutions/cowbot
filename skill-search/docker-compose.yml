@@ -5,14 +5,14 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - ./data/${SQLITE_DATABASE}:/app/data/${SQLITE_DATABASE}:ro
+      - ./data/skill-search.db:/app/data/skill-search.db:ro
   job-refresh-skills:
     build: .
-    entrypoint: "node ./src/jobs/refreshSkills.js"
+    command: "node ./src/jobs/refreshSkills.js"
     volumes:
-      - ./data/${SQLITE_DATABASE}:/app/data/${SQLITE_DATABASE}:rw
+      - ./data/skill-search.db:/app/data/skill-search.db:rw
   job-refresh-users:
     build: .
-    entrypoint: "node ./src/jobs/refreshUsers.js"
+    command: "node ./src/jobs/refreshUsers.js"
     volumes:
-      - ./data/${SQLITE_DATABASE}:/app/data/${SQLITE_DATABASE}:rw
+      - ./data/skill-search.db:/app/data/skill-search.db:rw

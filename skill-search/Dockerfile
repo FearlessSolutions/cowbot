@@ -1,14 +1,13 @@
-FROM node:8-stretch
+FROM node:8-alpine
 
 RUN mkdir /app
 WORKDIR /app
 
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
-
+RUN apk add yarn
+COPY . ./
 COPY yarn.lock package.json ./
 RUN yarn install
-
-COPY . ./
+RUN yarn run db:create
 
 EXPOSE 3001
 

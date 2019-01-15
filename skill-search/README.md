@@ -63,9 +63,8 @@ $ curl http://localhost:3001/users?skill=ruby
 ```
 $ docker build -t skill-search .
 $ docker run \
-    -p 3001:3000 \
-    -e "SQLITE_DATABASE=/app/skill-search-development.db" \
-    -v $(pwd)/data/skill-search-development.db:/app/data/skill-search-development.db:rw \
+    -p 3001:3001 \
+    -v $(pwd)/data/skill-search.db:/app/data/skill-search.db:rw \
     skill-search
 ```
 
