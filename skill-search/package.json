@@ -20,6 +20,11 @@
     "server": "node ./src/server.js",
     "skills:insert": "node ./src/tasks/insertSkills.js",
     "skills:refresh": "npm run skills:insert && npm run users-skills:insert",
-    "start": "node ./src/server.js"
+    "start": "node ./src/server.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "supertest": "^3.4.1"
   }
 }
