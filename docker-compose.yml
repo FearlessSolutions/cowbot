@@ -45,7 +45,7 @@ services:
     restart: unless-stopped
     env_file:
       .skill-search.env
-    entrypoint: "node ./src/jobs/refreshSkills.js"
+    command: "node ./src/jobs/refreshSkills.js"
     volumes:
       - ./skill-search/data/skill-search.db:/app/data/skill-search.db:rw
 
@@ -55,6 +55,6 @@ services:
     restart: unless-stopped
     env_file:
       .skill-search.env
-    entrypoint: "node ./src/jobs/refreshUsers.js"
+    command: "node ./src/jobs/refreshUsers.js"
     volumes:
       - ./skill-search/data/skill-search.db:/app/data/skill-search.db:rw
