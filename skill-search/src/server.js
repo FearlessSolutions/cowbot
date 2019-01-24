@@ -1,15 +1,15 @@
 const config = require('../config')
 const express = require('express')
-const app = express()
+const server = express()
 
 const sqlite3 = require('sqlite3')
 const db = new sqlite3.Database(config.sqliteDatabase)
 
 const { selectUsersWithSkill } = require('./db')
 
-app.get('/', (req, res) => res.send('skill-search'))
+server.get('/', (req, res) => res.send('skill-search api'))
 
-app.get('/users', (req, res) => {
+server.get('/users', (req, res) => {
   const skill = req.query.skill
 
   db.all(selectUsersWithSkill, skill, (err, rows) => {
@@ -19,4 +19,6 @@ app.get('/users', (req, res) => {
   })
 })
 
-app.listen(config.port, () => console.log(`skill-share app listening on port ${config.port}`))
+module.exports = server.listen(config.port, () => {
+  console.log(`skill-share api listening on port ${config.port}`)
+})

@@ -47,7 +47,7 @@ $ yarn run skills:refresh
 Query skills from the command line
 
 ```
-$ yarn run query -- javascript
+$ yarn run query javascript
 ```
 
 Query skills via api
@@ -91,7 +91,7 @@ Visit `http://localhost:3001/users?skill=ruby`
 * [x] create table of skills
 * [x] create join table users_skills
 * [x] query skills from command line
-* [ ] write tests
+* [x] write tests
 * [x] dockerize it
 * [x] create web api for querying
 * [ ] instead of updating all users, conditionally update

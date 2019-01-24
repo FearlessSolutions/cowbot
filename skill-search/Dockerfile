@@ -7,7 +7,6 @@ RUN apk add yarn
 COPY . ./
 COPY yarn.lock package.json ./
 RUN yarn install
-RUN yarn run db:create
 
 EXPOSE 3001
 

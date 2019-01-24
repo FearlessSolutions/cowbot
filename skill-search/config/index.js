@@ -1,10 +1,19 @@
 require('dotenv').config()
 const path = require('path')
 
+let databaseName
+const environment = process.env.NODE_ENV
+
+if (environment !== 'production') {
+  databaseName = path.resolve(`${__dirname}/../data/skill-search-${environment}.db`)
+} else {
+  databaseName = path.resolve(`${__dirname}/../data/skill-search.db`)
+}
+
 const config = {
   port: process.env.PORT || 3001,
   slackOauthToken: process.env.SLACK_OAUTH_TOKEN,
-  sqliteDatabase: path.resolve(`${__dirname}/../data/skill-search.db`),
+  sqliteDatabase: databaseName,
 }
 
 Object.keys(config).forEach(key => {
