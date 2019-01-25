@@ -42,7 +42,7 @@ describe('server', () => {
         .expect(['adelosreyes'])
     })
 
-    test('returns an empty array an unknown skill', () => {
+    test('returns an empty array for an unknown skill', () => {
       return request(server).get('/users?skill=globbing')
         .expect([])
     })
