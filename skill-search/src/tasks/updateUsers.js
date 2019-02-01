@@ -27,7 +27,6 @@ const updateUserProfileFromApi = (uid) => {
 
     let params = {
       $uid: uid,
-      $email: user.profile.email || null,
       $tech_skills_csv: techSkillsCsv
     }
 

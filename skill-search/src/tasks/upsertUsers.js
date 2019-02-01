@@ -14,8 +14,6 @@ slackApi.fetchUsers().then((data) => {
     let params = {
       $uid: user.id,
       $name: user.name,
-      $display_name: user.profile.display_name,
-      $image_url: user.profile.image_1024 || user.profile.image_512 || user.profile.image_192,
       $updated_at: user.updated
     }
 

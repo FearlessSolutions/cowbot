@@ -6,15 +6,12 @@ CREATE TABLE users(
   id integer primary key not null,
   uid text not null,
   name text,
-  email text,
-  display_name text,
-  image_url text,
   tech_skills_csv text,
   updated_at integer not null
 );
-INSERT INTO users VALUES(1,'AAAAAAAAA','adelosreyes','adelosreyes@example.com','adelosreyes','https://placekitten.com/512/512?image=1','testing, C#, debugging, questioning',1544542617);
-INSERT INTO users VALUES(2,'AAAAAAAAB','rdavis','rdavis@example.com','richard','https://placekitten.com/512/512?image=2','ruby, javascript, node, react, automated testing, sql',1547756906);
-INSERT INTO users VALUES(3,'AAAAAAAAC','amathews','amathews@example.com','amathews','https://placekitten.com/512/512?image=3','Javascript, ExtJS, Java, MS SQL, CSS',1547504120);
+INSERT INTO users VALUES(1,'AAAAAAAAA','adelosreyes','testing, C#, debugging, questioning',1544542617);
+INSERT INTO users VALUES(2,'AAAAAAAAB','rdavis','ruby, javascript, node, react, automated testing, sql',1547756906);
+INSERT INTO users VALUES(3,'AAAAAAAAC','amathews','Javascript, ExtJS, Java, MS SQL, CSS',1547504120);
 
 CREATE TABLE skills(
   id integer primary key not null,

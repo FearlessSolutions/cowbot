@@ -20,5 +20,7 @@ server.get('/users', (req, res) => {
 })
 
 module.exports = server.listen(config.port, () => {
-  console.log(`skill-share api listening on port ${config.port}`)
+  let msg = `skill-search api listening on port ${config.port}`
+  msg = `${msg} in ${config.environment} mode`
+  console.log(msg)
 })

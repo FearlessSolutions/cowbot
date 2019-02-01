@@ -3,9 +3,6 @@ create table users(
   id integer primary key not null,
   uid text not null,
   name text,
-  email text,
-  display_name text,
-  image_url text,
   tech_skills_csv text,
   updated_at integer not null
 );

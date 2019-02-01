@@ -2,8 +2,8 @@
 
 ## features
 
-* [x] Fetch team member data from the Slack API
-* [x] Query team members by skills, listed in their profile
+* Fetch team member data from the Slack API
+* Query team members by skills, listed in their profile
 
 
 ## configuration
@@ -23,22 +23,14 @@ $ yarn
 Create the database:
 
 ```
-$ yarn run db:load-schema
+$ yarn db:create
 ```
 
 
 ## etl data
 
-Grab user data from Slack:
-
 ```
-$ yarn run users:refresh
-```
-
-Populate the skills and users_skills tables:
-
-```
-$ yarn run skills:refresh
+$ yarn data:refresh
 ```
 
 
@@ -47,7 +39,7 @@ $ yarn run skills:refresh
 Query skills from the command line
 
 ```
-$ yarn run query javascript
+$ yarn query javascript
 ```
 
 Query skills via api
@@ -64,7 +56,7 @@ $ curl http://localhost:3001/users?skill=ruby
 $ docker build -t skill-search .
 $ docker run \
     -p 3001:3001 \
-    -v $(pwd)/data/skill-search.db:/app/data/skill-search.db:rw \
+    -v $(pwd)/data:/app/data:ro \
     skill-search
 ```
 
@@ -100,4 +92,4 @@ Visit `http://localhost:3001/users?skill=ruby`
 * [x] perform etl tasks on a reoccurring basis (weekly/daily/hourly)
 * [x] database location specified by environment
 * [x] run `yarn run users:refresh` and `yarn run users:refresh` with cron in container
-* [ ] steps for creating a database on first-run (in Dockerfile?)
+* [x] create database when launching container

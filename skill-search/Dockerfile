@@ -1,9 +1,12 @@
 FROM node:8-alpine
 
+ENV NODE_ENV production
+
 RUN mkdir /app
 WORKDIR /app
 
-RUN apk add yarn
+RUN apk add sqlite yarn
+
 COPY . ./
 COPY yarn.lock package.json ./
 RUN yarn install
