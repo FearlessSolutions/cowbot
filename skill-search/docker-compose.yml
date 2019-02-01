@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db-create:
+    build: .
+    command: "yarn db:create"
+    volumes:
+      - data-volume:/app/data:rw
+  api:
+    build: .
+    depends_on:
+      - db-create
+    ports:
+      - "3001:3001"
+    volumes:
+      - data-volume:/app/data:ro
+  job-data-refresh:
+    build: .
+    depends_on:
+      - db-create
+    command: "yarn job:data:refresh"
+    volumes:
+      - data-volume:/app/data:rw
+
+volumes:
+  data-volume:

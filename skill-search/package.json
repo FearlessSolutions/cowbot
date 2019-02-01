@@ -1,0 +1,32 @@
+{
+  "name": "skill-search",
+  "version": "0.1.0",
+  "description": "API for searching Slack profiles for listed tech skills",
+  "license": "ISC",
+  "scripts": {
+    "data:refresh": "npm run users:refresh && npm run skills:refresh",
+    "db:create": "node ./src/tasks/createDb.js",
+    "db:drop": "node ./src/tasks/dropDb.js",
+    "job:data:refresh": "node ./src/jobs/refreshData.js",
+    "query": "node ./src/tasks/querySkills.js",
+    "skills:insert": "node ./src/tasks/insertSkills.js",
+    "skills:refresh": "npm run skills:insert && npm run users-skills:insert",
+    "start": "node ./src/server.js",
+    "test": "jest",
+    "users:refresh": "npm run users:upsert && npm run users:update",
+    "users:update": "node ./src/tasks/updateUsers.js",
+    "users:upsert": "node ./src/tasks/upsertUsers.js",
+    "users-skills:insert": "node ./src/tasks/insertUsersSkills.js"
+  },
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "node-cron": "^2.0.3",
+    "node-fetch": "^2.3.0",
+    "sqlite3": "^4.0.4"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "supertest": "^3.4.1"
+  }
+}
