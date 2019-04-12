@@ -11,4 +11,4 @@ babyText = (name, date) ->
 
 module.exports = (robot) ->
   robot.respond /babywatch/i, (res) ->
-    res.send "#{babyText('Bethany', '2019-07-18')}\n#{babyText('Rachel', '2019-04-22')}\n#{babyText('Jon King', '2019-07-31')}\n"
+    res.send "#{babyText('Bethany', '2019-07-18')}\n#{babyText('Rachel', '2019-04-22')}\n#{babyText('Jon King', '2019-07-31')}\n#{babyText('Clare', '2019-10-15')}\n"
