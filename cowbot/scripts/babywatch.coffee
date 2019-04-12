@@ -7,7 +7,10 @@ weeksUntil = (endDate) ->
   weeks = Math.round((new Date(endDate) - new Date()) / millisecondsPerWeek);
   return Math.max weeks, 0
 babyText = (name, date) ->
-  return "#{name}'s baby is due on #{date}!  That's in #{daysUntil(date)} days, or about #{weeksUntil(date)} weeks!"
+  if daysUntil(date) == 0
+    return "#{name}'s baby was due on #{date}!"
+  else
+    return "#{name}'s baby is due on #{date}!  That's in #{daysUntil(date)} #{if daysUntil(date) == 1 then "day" else "days"}, or about #{weeksUntil(date)} #{if weeksUntil(date) == 1 then "week" else "weeks"}!"
 
 module.exports = (robot) ->
   robot.respond /babywatch/i, (res) ->
