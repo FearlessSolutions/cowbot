@@ -3,6 +3,7 @@ services:
   hubot:
     build:
       context: .
+    image: fearlesstech/cowbot:cowbot
     restart: unless-stopped
     env_file:
       - .env
