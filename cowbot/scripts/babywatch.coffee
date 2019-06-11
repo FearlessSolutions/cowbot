@@ -17,6 +17,6 @@ module.exports = (robot) ->
     res.send """
       #{babyText('Rachel',   ':girl: Rose', '2019-04-17')}
       #{babyText('Bethany',  ':boy:',       '2019-07-18')}
-      #{babyText('Jon King', ':boy',        '2019-07-31')}
+      #{babyText('Jon King', ':boy:',        '2019-07-31')}
       #{babyText('Clare',    ':girl:',      '2019-10-15')}
     """
