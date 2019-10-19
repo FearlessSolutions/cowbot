@@ -14,10 +14,8 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir /app
 WORKDIR /app
 
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
-
-COPY yarn.lock package.json ./
-RUN yarn install --frozen-lockfile --production && yarn cache clean
+COPY package*.json ./
+RUN npm install
 
 COPY . .
 
