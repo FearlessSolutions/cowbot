@@ -50,7 +50,9 @@ module.exports = (robot) ->
     user = msg.message.user.name.toLowerCase()
     msg.send "I'll totally validate that for you, #{user}... later"
   robot.respond /validate ([0-9]+)$/i, (msg) ->
-    if msg.message.room is "C2LRCM4DN"
+    # parking validation disabled until further notice
+    if false
+    #if msg.message.room is "C2LRCM4DN"
       ticket = msg.match[1]
       if ticket.length isnt 6
         msg.send "Hold on there, cowboy.  I need 6 digits to validate parking."
@@ -84,7 +86,8 @@ module.exports = (robot) ->
             upload_picture(robot, msg, response_body.screenshot_file, ticket, "Error Message for ticket #{ticket}", "error-#{ticket}.png")
             msg.send Util.inspect(error)
     else
-      msg.send "Hold on there, cowboy.  I can't validate parking from here.  You should moooove over to #validate_parking"
+      msg.send "Hold on there, cowboy.  Parking validation is currenly out of service.  Moooove on over to ClickTime and wrangle up an expense report."
+      #msg.send "Hold on there, cowboy.  I can't validate parking from here.  You should moooove over to #validate_parking"
 
 upload_picture =(robot, msg, file, ticket, title, target_filename) ->
   post_options =
