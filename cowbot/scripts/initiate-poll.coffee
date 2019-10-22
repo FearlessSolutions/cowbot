@@ -4,7 +4,7 @@ Util = require "util"
 module.exports = (robot) ->
   robot.hear /^'(\/poll)' '(.*)'/, (msg) ->
     # TODO: Confirm sender
-    console.log "initiate-poll: Username: " + msg.message.user.name.toLowerCase()
+    console.log "initiate-poll: user: " + Util.inspect(msg.message.user)
     # TODO: Confirm Channel
     console.log "initiate-poll: Room: "+ msg.message.room
     append_text = " anonymous"
