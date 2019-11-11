@@ -8,6 +8,7 @@
     "clark": "0.0.6",
     "coffee-script": "~1.6",
     "dotenv": "^1.2.0",
+    "haiku-detect": "^1.0.2",
     "hubot": "^2.19.0",
     "hubot-business-cat": "^1.5.0",
     "hubot-diagnostics": "0.0.1",
