@@ -9,7 +9,7 @@
     "coffee-script": "~1.6",
     "dotenv": "^1.2.0",
     "haiku-detect": "^1.1.0",
-    "hubot": "^2.19.0",
+    "hubot": "^3.3",
     "hubot-business-cat": "^1.5.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.1.5",
