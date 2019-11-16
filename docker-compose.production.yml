@@ -7,16 +7,16 @@ services:
     restart: unless-stopped
     env_file:
       - .hubot.env
-    links:
-    - parking-service
+#    links:
+#    - parking-service
     volumes:
     - images:/cowbot-images
-  parking-service:
-    image: fearlesstech/cowbot:parking-service
-    restart: unless-stopped
-    environment:
-    - SCREENSHOT_PATH=/cowbot-images
-    env_file:
-      - .parking-service.env
-    volumes:
-    - images:/cowbot-images
+#  parking-service:
+#    image: fearlesstech/cowbot:parking-service
+#    restart: unless-stopped
+#    environment:
+#    - SCREENSHOT_PATH=/cowbot-images
+#    env_file:
+#      - .parking-service.env
+#    volumes:
+#    - images:/cowbot-images
