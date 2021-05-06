@@ -25,7 +25,7 @@
     "hubot-shipit": "^0.2.0",
     "hubot-slack": "^4.7.1",
     "querystring": "^0.2.0",
-    "underscore": ">= 1.0"
+    "underscore": ">= 1.12"
   },
   "scripts": {
     "start": "hubot --adapter slack --name \"cowbot\" \"$@\""
